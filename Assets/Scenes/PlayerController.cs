@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController controller;
     private Vector2 touchStart;
+    public Animator animator;   // drag the character's Animator here
 
     void Start()
     {
@@ -84,7 +85,10 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         if (controller.isGrounded)
+        {
             verticalVelocity = jumpForce;
+            if (animator != null) animator.SetTrigger("Jump");
+        }
     }
 
     void StartSlide()
@@ -94,6 +98,7 @@ public class PlayerController : MonoBehaviour
             isSliding = true;
             slideTimer = slideDuration;
             controller.height = defaultHeight * 0.5f;
+            if (animator != null) animator.SetTrigger("Slide");
         }
     }
 

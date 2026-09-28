@@ -104,6 +104,7 @@ IL2CPP_EXTERN_C RuntimeClass* Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2
 IL2CPP_EXTERN_C RuntimeClass* Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* SceneManager_tA0EF56A88ACA4A15731AF7FDC10A869FA4C698FA_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____04AA1EDC2AD3731EB0598963100044A6600D7B04A9FECC2212968E0F83673E06_FieldInfo_var;
 IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA____5767207DE840AEF56F098E5B400B2BD5275FD20A1236CDC351A982E2BE35753A_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral1B00FE8D93C8DA57AEA59DB0FE808A827C3503B6;
@@ -1105,10 +1106,13 @@ struct UIBehaviour_tB9D4295827BD2EEDEF0749200C6CA7090C742A9D  : public MonoBehav
 struct UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___scoreText;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___pauseButton;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___startPanel;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___pausePanel;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___gameOverPanel;
 	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___finalScoreText;
 	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___highScoreText;
-	bool ___shown;
+	bool ___gameOverShown;
 };
 struct Graphic_tCBFCA4585A19E2B75465AECFEAC43F4016BF7931  : public UIBehaviour_tB9D4295827BD2EEDEF0749200C6CA7090C742A9D
 {
@@ -1445,6 +1449,10 @@ struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_StaticFields
 struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields
 {
 	GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* ___U3CInstanceU3Ek__BackingField;
+};
+struct UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_StaticFields
+{
+	bool ___skipStartScreen;
 };
 struct TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9_StaticFields
 {
@@ -3163,20 +3171,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackSpawner_Start_mC229093926F7401A6F7B
 	{
 		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/TrackSpawner.cs:16>
 		V_0 = 0;
-		goto IL_0012;
+		goto IL_0015;
 	}
 
 IL_0004:
 	{
 		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/TrackSpawner.cs:17>
 		int32_t L_0 = V_0;
-		TrackSpawner_SpawnSegment_m2852A72C8FA781D707048E557264CF3000BA70DC(__this, (bool)((((int32_t)L_0) > ((int32_t)0))? 1 : 0), NULL);
+		TrackSpawner_SpawnSegment_m2852A72C8FA781D707048E557264CF3000BA70DC(__this, (bool)((((int32_t)((((int32_t)L_0) < ((int32_t)2))? 1 : 0)) == ((int32_t)0))? 1 : 0), NULL);
 		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/TrackSpawner.cs:16>
 		int32_t L_1 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_1, 1));
 	}
 
-IL_0012:
+IL_0015:
 	{
 		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/TrackSpawner.cs:16>
 		int32_t L_2 = V_0;
@@ -3438,6 +3446,63 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TrackSpawner__ctor_m1620A316CB65D1BB0D02
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
 // Method Definition Index: 98460
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_Start_m113F392674AB08A26877728CD36F06332E869080 (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:26>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___pausePanel;
+		NullCheck(L_0);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_0, (bool)0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:27>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = __this->___gameOverPanel;
+		NullCheck(L_1);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_1, (bool)0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:29>
+		bool L_2 = ((UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_StaticFields*)il2cpp_codegen_static_fields_for(UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_il2cpp_TypeInfo_var))->___skipStartScreen;
+		if (!L_2)
+		{
+			goto IL_0048;
+		}
+	}
+	{
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:32>
+		((UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_StaticFields*)il2cpp_codegen_static_fields_for(UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_il2cpp_TypeInfo_var))->___skipStartScreen = (bool)0;
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:33>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___startPanel;
+		NullCheck(L_3);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_3, (bool)0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:34>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___pauseButton;
+		NullCheck(L_4);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_4, (bool)1, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:35>
+		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((1.0f), NULL);
+		return;
+	}
+
+IL_0048:
+	{
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:40>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___startPanel;
+		NullCheck(L_5);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_5, (bool)1, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:41>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___pauseButton;
+		NullCheck(L_6);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:42>
+		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((0.0f), NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:44>
+		return;
+	}
+}
+// Method Definition Index: 98461
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_Update_m95D2E80B8F461F15C1B9BD6DB0811F5CC18571AB (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3451,11 +3516,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_Update_m95D2E80B8F461F15C1B9BD
 	GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* V_0 = NULL;
 	int32_t V_1 = 0;
 	{
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:15>
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:48>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_0;
 		L_0 = GameManager_get_Instance_m076FE4D98E785B5AEE0B4C360C7857F824E7FBD0_inline(NULL);
 		V_0 = L_0;
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:16>
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:49>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_1 = V_0;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -3466,13 +3531,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_Update_m95D2E80B8F461F15C1B9BD
 		}
 	}
 	{
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:16>
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:49>
 		return;
 	}
 
 IL_0010:
 	{
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:18>
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:51>
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_3 = __this->___scoreText;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_4 = V_0;
 		NullCheck(L_4);
@@ -3483,77 +3548,136 @@ IL_0010:
 		L_6 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_1), NULL);
 		NullCheck(L_3);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_3, L_6);
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:20>
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:53>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_7 = V_0;
 		NullCheck(L_7);
 		bool L_8;
 		L_8 = GameManager_get_IsGameOver_m6CF1C7E7168A17D5FE446DD1EE77E2E22D2F2262_inline(L_7, NULL);
 		if (!L_8)
 		{
-			goto IL_0092;
+			goto IL_009e;
 		}
 	}
 	{
-		bool L_9 = __this->___shown;
+		bool L_9 = __this->___gameOverShown;
 		if (L_9)
 		{
-			goto IL_0092;
+			goto IL_009e;
 		}
 	}
 	{
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:22>
-		__this->___shown = (bool)1;
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:23>
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:55>
+		__this->___gameOverShown = (bool)1;
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:56>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = __this->___gameOverPanel;
 		NullCheck(L_10);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_10, (bool)1, NULL);
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:24>
-		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_11 = __this->___finalScoreText;
-		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_12 = V_0;
-		NullCheck(L_12);
-		int32_t L_13;
-		L_13 = GameManager_get_Score_m3640082785929352BF649E844AECA9184AAA6DAB_inline(L_12, NULL);
-		V_1 = L_13;
-		String_t* L_14;
-		L_14 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_1), NULL);
-		String_t* L_15;
-		L_15 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral1B00FE8D93C8DA57AEA59DB0FE808A827C3503B6, L_14, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:57>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = __this->___pauseButton;
 		NullCheck(L_11);
-		VirtualActionInvoker1< String_t* >::Invoke(66, L_11, L_15);
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:25>
-		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_16 = __this->___highScoreText;
-		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_17 = V_0;
-		NullCheck(L_17);
-		int32_t L_18;
-		L_18 = GameManager_get_HighScore_m3A7A814B7F2264C9E75771ED3074B66A54A31D87_inline(L_17, NULL);
-		V_1 = L_18;
-		String_t* L_19;
-		L_19 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_1), NULL);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_11, (bool)0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:58>
+		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_12 = __this->___finalScoreText;
+		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_13 = V_0;
+		NullCheck(L_13);
+		int32_t L_14;
+		L_14 = GameManager_get_Score_m3640082785929352BF649E844AECA9184AAA6DAB_inline(L_13, NULL);
+		V_1 = L_14;
+		String_t* L_15;
+		L_15 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_1), NULL);
+		String_t* L_16;
+		L_16 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral1B00FE8D93C8DA57AEA59DB0FE808A827C3503B6, L_15, NULL);
+		NullCheck(L_12);
+		VirtualActionInvoker1< String_t* >::Invoke(66, L_12, L_16);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:59>
+		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_17 = __this->___highScoreText;
+		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_18 = V_0;
+		NullCheck(L_18);
+		int32_t L_19;
+		L_19 = GameManager_get_HighScore_m3A7A814B7F2264C9E75771ED3074B66A54A31D87_inline(L_18, NULL);
+		V_1 = L_19;
 		String_t* L_20;
-		L_20 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral2D19E5CB306F3803D48A0FC826D6E68FCADD27C2, L_19, NULL);
-		NullCheck(L_16);
-		VirtualActionInvoker1< String_t* >::Invoke(66, L_16, L_20);
+		L_20 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_1), NULL);
+		String_t* L_21;
+		L_21 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral2D19E5CB306F3803D48A0FC826D6E68FCADD27C2, L_20, NULL);
+		NullCheck(L_17);
+		VirtualActionInvoker1< String_t* >::Invoke(66, L_17, L_21);
 	}
 
-IL_0092:
+IL_009e:
 	{
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:27>
-		return;
-	}
-}
-// Method Definition Index: 98461
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_OnRestartButton_m384E4FF95CAF0271E75F4F51DB236115E8441743 (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
-{
-	{
-		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:29>
-		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_0;
-		L_0 = GameManager_get_Instance_m076FE4D98E785B5AEE0B4C360C7857F824E7FBD0_inline(NULL);
-		NullCheck(L_0);
-		GameManager_Restart_mCAD4B8EB332D65D94F493AD96956EC1777DC3854(L_0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:61>
 		return;
 	}
 }
 // Method Definition Index: 98462
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_OnPlayButton_m8209C70E1E2AFAD1CC59017CBF627D51C0CD3E81 (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:65>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___startPanel;
+		NullCheck(L_0);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_0, (bool)0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:66>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1 = __this->___pauseButton;
+		NullCheck(L_1);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_1, (bool)1, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:67>
+		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((1.0f), NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:68>
+		return;
+	}
+}
+// Method Definition Index: 98463
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_OnPauseButton_mBDAE73ADD049D2B063D20848DC544CF61C6D73CF (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:72>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___pausePanel;
+		NullCheck(L_0);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_0, (bool)1, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:73>
+		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((0.0f), NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:74>
+		return;
+	}
+}
+// Method Definition Index: 98464
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_OnResumeButton_mF3DE6DAECE3B0B1F8D59A8B35184FF5E9EC74C8E (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:78>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___pausePanel;
+		NullCheck(L_0);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_0, (bool)0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:79>
+		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((1.0f), NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:80>
+		return;
+	}
+}
+// Method Definition Index: 98465
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager_OnRestartButton_m384E4FF95CAF0271E75F4F51DB236115E8441743 (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:84>
+		((UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_StaticFields*)il2cpp_codegen_static_fields_for(UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3_il2cpp_TypeInfo_var))->___skipStartScreen = (bool)1;
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:85>
+		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_0;
+		L_0 = GameManager_get_Instance_m076FE4D98E785B5AEE0B4C360C7857F824E7FBD0_inline(NULL);
+		NullCheck(L_0);
+		GameManager_Restart_mCAD4B8EB332D65D94F493AD96956EC1777DC3854(L_0, NULL);
+		//<source_info:C:/Users/MSI/JungleRunner/Assets/Scenes/UIManager.cs:86>
+		return;
+	}
+}
+// Method Definition Index: 98466
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager__ctor_mC9DC2B8984E76F424E73C1860AD4BD3DEBF6573F (UIManager_t16825A2483574F37D7D47AB939A6FA639678B1F3* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3569,7 +3693,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIManager__ctor_mC9DC2B8984E76F424E73C18
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98463
+// Method Definition Index: 98467
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (Readme_tE17B99201D0F52BD5727638AD3F41072A65B3BBB* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3585,7 +3709,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Readme__ctor_m69C325C4C171DCB0312B646A90
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98464
+// Method Definition Index: 98468
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (Section_t50C894D0A717C2368EBAAE5477D4E8626D0B5401* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3601,7 +3725,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Section__ctor_m5F732533E4DFC0167D965E5F5
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 98465
+// Method Definition Index: 98469
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t8F50E352855B96FFFC1D9CB07EACC90C99D73A3E UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3635,7 +3759,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t8F50E352855B96FFFC1D9CB07EACC
 		return L_6;
 	}
 }
-// Method Definition Index: 98466
+// Method Definition Index: 98470
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tC95F24D0C6E6B77389433852BB389F39C692926E* __this, const RuntimeMethod* method) 
 {
 	{

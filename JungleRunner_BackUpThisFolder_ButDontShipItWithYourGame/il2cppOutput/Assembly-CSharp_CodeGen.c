@@ -48,14 +48,18 @@ extern void TrackSpawner_Update_m4A594FF729F8343ED7F218184C30B63AE23BDF30 (void)
 extern void TrackSpawner_SpawnSegment_m2852A72C8FA781D707048E557264CF3000BA70DC (void);
 extern void TrackSpawner_RecycleSegment_m2D1CC089CEABA983CAFDBE4689CAF31CD711F756 (void);
 extern void TrackSpawner__ctor_m1620A316CB65D1BB0D02DF47C6CCC8F51677E3FD (void);
+extern void UIManager_Start_m113F392674AB08A26877728CD36F06332E869080 (void);
 extern void UIManager_Update_m95D2E80B8F461F15C1B9BD6DB0811F5CC18571AB (void);
+extern void UIManager_OnPlayButton_m8209C70E1E2AFAD1CC59017CBF627D51C0CD3E81 (void);
+extern void UIManager_OnPauseButton_mBDAE73ADD049D2B063D20848DC544CF61C6D73CF (void);
+extern void UIManager_OnResumeButton_mF3DE6DAECE3B0B1F8D59A8B35184FF5E9EC74C8E (void);
 extern void UIManager_OnRestartButton_m384E4FF95CAF0271E75F4F51DB236115E8441743 (void);
 extern void UIManager__ctor_mC9DC2B8984E76F424E73C1860AD4BD3DEBF6573F (void);
 extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
 extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[48] = 
+static Il2CppMethodPointer s_methodPointers[52] = 
 {
 	CameraFollow_Start_m99884706C63F385A5C536C8837C14A38D1B6D78D,
 	CameraFollow_LateUpdate_m9C559F2A33098CED5CB8BD82CCD6FC98AB521D61,
@@ -98,7 +102,11 @@ static Il2CppMethodPointer s_methodPointers[48] =
 	TrackSpawner_SpawnSegment_m2852A72C8FA781D707048E557264CF3000BA70DC,
 	TrackSpawner_RecycleSegment_m2D1CC089CEABA983CAFDBE4689CAF31CD711F756,
 	TrackSpawner__ctor_m1620A316CB65D1BB0D02DF47C6CCC8F51677E3FD,
+	UIManager_Start_m113F392674AB08A26877728CD36F06332E869080,
 	UIManager_Update_m95D2E80B8F461F15C1B9BD6DB0811F5CC18571AB,
+	UIManager_OnPlayButton_m8209C70E1E2AFAD1CC59017CBF627D51C0CD3E81,
+	UIManager_OnPauseButton_mBDAE73ADD049D2B063D20848DC544CF61C6D73CF,
+	UIManager_OnResumeButton_mF3DE6DAECE3B0B1F8D59A8B35184FF5E9EC74C8E,
 	UIManager_OnRestartButton_m384E4FF95CAF0271E75F4F51DB236115E8441743,
 	UIManager__ctor_mC9DC2B8984E76F424E73C1860AD4BD3DEBF6573F,
 	Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6,
@@ -106,7 +114,7 @@ static Il2CppMethodPointer s_methodPointers[48] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[48] = 
+static const int32_t s_InvokerIndices[52] = 
 {
 	15562,
 	15562,
@@ -154,6 +162,10 @@ static const int32_t s_InvokerIndices[48] =
 	15562,
 	15562,
 	15562,
+	15562,
+	15562,
+	15562,
+	15562,
 	26632,
 	15562,
 };
@@ -161,7 +173,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	48,
+	52,
 	s_methodPointers,
 	0,
 	NULL,

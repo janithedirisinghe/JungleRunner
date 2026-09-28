@@ -1069,6 +1069,7 @@ MonoBehaviour:
   gravity: -24
   slideDuration: 0.8
   minSwipeDistance: 50
+  animator: {fileID: 1560942589}
 --- !u!143 &482559006
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2413,6 +2414,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 968c8213576774b4da61f930519dc8cb, type: 3}
   m_PrefabInstance: {fileID: 1560942587}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1560942589 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 968c8213576774b4da61f930519dc8cb, type: 3}
+  m_PrefabInstance: {fileID: 1560942587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1567137497
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,10 +3173,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb339aebdc3aa14e9765b5a2ebc2586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackSpawner
-  segmentPrefab: {fileID: 932810325313874316, guid: a0688ccb96db4a34dabfd49c59c48bc5, type: 3}
+  normalSegmentPrefab: {fileID: 932810325313874316, guid: a0688ccb96db4a34dabfd49c59c48bc5, type: 3}
+  pondSegmentPrefab: {fileID: 2802219374363496437, guid: 64df6b3f5e5cd854694bfead62b43727, type: 3}
   player: {fileID: 482559009}
   segmentsOnScreen: 6
   segmentLength: 30
+  pondChance: 0.3
+  minRunLength: 2
+  maxRunLength: 5
+  safeSegmentsAtStart: 4
 --- !u!4 &1987055442
 Transform:
   m_ObjectHideFlags: 0
